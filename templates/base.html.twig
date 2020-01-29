@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <!-- ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <title>{% block title %}Syn'ops{% endblock %}</title>
 
-    {% block stylesheets %}
-        {# 'app' must match the first argument to addEntry() in webpack.config.js #}
-        {{ encore_entry_link_tags('app') }}
-
-        <!-- Renders a link tag (if your module requires any CSS)
-             <link rel="stylesheet" href="/build/app.css"> -->
-    {% endblock %}
+    {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon" type="image/png" href="{{ asset('build/images/favicon.ico') }}"/>
 </head>
+
 <body>
-<!-- ... -->
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
+<header>
 
-    <!-- Renders app.js & a webpack runtime.js file
-        <script src="/build/runtime.js"></script>
-        <script src="/build/app.js"></script> -->
-{% endblock %}
+    {% block navbar %}{% endblock %}
+
+</header>
+
+{% block body %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{{ encore_entry_script_tags('app') }}
+
+{% block javascripts %}{% endblock %}
+
 </body>
 </html>
