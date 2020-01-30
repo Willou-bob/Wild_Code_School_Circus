@@ -15,11 +15,11 @@ class SpectacleFixtures extends Fixture
 
         for ($i = 0; $i < 10; $i++) {
             $spectacle = new Spectacle();
-            $spectacle->setName($faker->realText(10));
-            $spectacle->setDescription($faker->realText(50));
+            $spectacle->setName($faker->realText(20));
+            $spectacle->setDescription($faker->paragraph(15));
             $spectacle->setDate($faker->dateTime);
             $spectacle->setPrice($faker->numberBetween(10,100));
-            $spectacle->setImage('Zooka.jpg');
+            $spectacle->setImage('/assets/images/Zooka.jpg');
 
             $manager->persist($spectacle);
         }
