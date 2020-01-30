@@ -12,9 +12,9 @@ class SpectacleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('image')
             ->add('name')
             ->add('description')
-            ->add('image')
             ->add('date')
             ->add('price')
         ;

@@ -38,6 +38,7 @@ class SpectacleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($spectacle);
             $entityManager->flush();
+            $this->addFlash('success', 'Le spectacle a été créé');
 
             return $this->redirectToRoute('spectacle_index');
         }
@@ -68,6 +69,7 @@ class SpectacleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Le spectacle a été modifiée');
 
             return $this->redirectToRoute('spectacle_index');
         }
@@ -87,6 +89,7 @@ class SpectacleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($spectacle);
             $entityManager->flush();
+            $this->addFlash('danger', 'Le spectacle a été supprimée');
         }
 
         return $this->redirectToRoute('spectacle_index');
