@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/adminSpectacle")
+ * @Route("/spectacle")
  */
 class SpectacleController extends AbstractController
 {
@@ -20,7 +20,7 @@ class SpectacleController extends AbstractController
      */
     public function index(SpectacleRepository $spectacleRepository): Response
     {
-        return $this->render('adminSpectacle/index.html.twig', [
+        return $this->render('spectacle/index.html.twig', [
             'spectacles' => $spectacleRepository->findAll(),
         ]);
     }
@@ -42,8 +42,8 @@ class SpectacleController extends AbstractController
             return $this->redirectToRoute('spectacle_index');
         }
 
-        return $this->render('adminSpectacle/new.html.twig', [
-            'adminSpectacle' => $spectacle,
+        return $this->render('spectacle/new.html.twig', [
+            'spectacle' => $spectacle,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +53,8 @@ class SpectacleController extends AbstractController
      */
     public function show(Spectacle $spectacle): Response
     {
-        return $this->render('adminSpectacle/show.html.twig', [
-            'adminSpectacle' => $spectacle,
+        return $this->render('spectacle/show.html.twig', [
+            'spectacle' => $spectacle,
         ]);
     }
 
@@ -72,8 +72,8 @@ class SpectacleController extends AbstractController
             return $this->redirectToRoute('spectacle_index');
         }
 
-        return $this->render('adminSpectacle/edit.html.twig', [
-            'adminSpectacle' => $spectacle,
+        return $this->render('spectacle/edit.html.twig', [
+            'spectacle' => $spectacle,
             'form' => $form->createView(),
         ]);
     }
