@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/index")
+     * @Route("/index", name="index")
      * @param SpectacleRepository $spectacleRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -44,6 +46,16 @@ class Spectacle
      * @Assert\NotBlank(message="Veuillez renseigner ces informations")
      */
     private $price;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Actor", mappedBy="spectacle")
+     */
+    private $actors;
+
+    public function __construct()
+    {
+        $this->actors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,6 +118,37 @@ class Spectacle
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Actor[]
+     */
+    public function getActors(): Collection
+    {
+        return $this->actors;
+    }
+
+    public function addActor(Actor $actor): self
+    {
+        if (!$this->actors->contains($actor)) {
+            $this->actors[] = $actor;
+            $actor->setSpectacle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActor(Actor $actor): self
+    {
+        if ($this->actors->contains($actor)) {
+            $this->actors->removeElement($actor);
+            // set the owning side to null (unless already changed)
+            if ($actor->getSpectacle() === $this) {
+                $actor->setSpectacle(null);
+            }
+        }
 
         return $this;
     }
