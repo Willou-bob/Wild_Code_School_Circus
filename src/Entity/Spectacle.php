@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SpectacleRepository")
+ * @Vich\Uploadable
  */
 class Spectacle
 {
@@ -30,7 +33,19 @@ class Spectacle
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var File|null
+     * @Assert\Image(
+     *     mimeTypes={
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/webp",
+     *          "image/jpg",
+     *      }
+     * )
+     * @Assert\File(
+     *     maxSize="2M",
+     * )
+     * @Vich\UploadableField(mapping="spectacles_pictures", fileNameProperty="filename")
      */
     private $image;
 
