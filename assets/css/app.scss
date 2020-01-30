@@ -1,6 +1,8 @@
+@import "vars";
 @import "~bootstrap/scss/bootstrap";
 @import "navbar";
+@import "carousel";
 
 body {
-    background-color: lightgray;
+    background-color:lightgray;
 }
