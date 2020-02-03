@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Spectacle;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Faker;
 
 class SpectacleFixtures extends Fixture
@@ -20,7 +20,7 @@ class SpectacleFixtures extends Fixture
             $spectacle->setDate($faker->dateTime);
             $spectacle->setPrice($faker->numberBetween(10,100));
             $spectacle->setImage('/assets/images/Zooka.jpg');
-
+            $this->addReference('spectacle_' . $i, $spectacle);
             $manager->persist($spectacle);
         }
 

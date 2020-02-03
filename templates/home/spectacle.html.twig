@@ -19,7 +19,7 @@
                             <li class="list-group-item">Prix: {{spectacle.price}} €</li>
                         </ul>
                         <div class="card-body">
-                            <a href="#" class="card-link">En savoir plus</a>
+                            <a href="{{ path('actor_index', {'slug': spectacle.id }) }}" class="card-link">En savoir plus</a>
                         </div>
                     </div>
 
